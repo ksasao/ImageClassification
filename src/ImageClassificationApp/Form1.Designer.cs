@@ -54,7 +54,7 @@
             // 
             this.buttonOpen.Location = new System.Drawing.Point(12, 61);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(253, 46);
+            this.buttonOpen.Size = new System.Drawing.Size(310, 46);
             this.buttonOpen.TabIndex = 2;
             this.buttonOpen.Text = "学習済みモデルを開く";
             this.buttonOpen.UseVisualStyleBackColor = true;
@@ -93,6 +93,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "モデルファイル(*.zip)|*.zip";
             // 
             // Form1
             // 

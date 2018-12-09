@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -74,13 +75,17 @@ namespace ImageClassificationApp
         {
             try
             {
+                // ファイルをロックしないようにするためコピーを作成
                 using (Bitmap bitmap = new Bitmap(filename))
                 {
                     bmp = new Bitmap(bitmap);
                     this.pictureBox1.Image = bmp;
                 }
-
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
                 this.textBox1.Text = modelScorer.ClassifyImage(filename);
+                watch.Stop();
+                this.textBox1.Text += $" ({watch.ElapsedMilliseconds} ms)";
             }
             catch (Exception ex)
             {
@@ -120,6 +125,7 @@ namespace ImageClassificationApp
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
+            openFileDialog1.FileName = modelFile;
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 this.textBox1.Text = "モデルを読み込んでいます";

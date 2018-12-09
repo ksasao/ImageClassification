@@ -18,6 +18,7 @@ namespace ImageClassification.Model
 {
     public class ModelBuilder
     {
+        // TODO 実質的に不要なコードを削除する
         private readonly string dataLocation;
         private readonly string imagesFolder;
         private readonly string inputModelLocation;

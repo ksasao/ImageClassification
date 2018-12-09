@@ -48,8 +48,9 @@ namespace ImageClassification.Model
             // that always buffers the response from the predictor
             // so we have to make a copy-by-value op everytime we get a response
             // from the predictor
-            ImageNetPrediction data=  predictor.Predict(testData);
+            ImageNetPrediction data =  predictor.Predict(testData);
             
+            // TODO 画像ファイルを握ったままになるのでリリースする
             return data.PredictedLabelValue + " " + data.Score.Max();
         }
     }
