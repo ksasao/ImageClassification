@@ -51,7 +51,7 @@ namespace ImageClassificationApp
         {
             var assetsPath = ModelHelpers.GetAssetsPath(path);
             var imagesFolder = ".";
-            var imageClassifierZip = path;
+            var imageClassifierZip = assetsPath;
             modelScorer = new ModelScorer(tagsTsv, imagesFolder, imageClassifierZip);
             textBox1.Text = "モデルを読み込みました。画像を Drag&Drop してください。";
         }

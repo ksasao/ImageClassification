@@ -1,5 +1,4 @@
-﻿using Microsoft.ML.Runtime.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,6 +18,15 @@ namespace ImageClassification.Model
             return Path.Combine(paths.Prepend(_dataRoot.Directory.FullName).ToArray());
         }
 
+
+        public static string DeleteAssets(params string[] paths)
+        {
+            var location = GetAssetsPath(paths);
+
+            if (!string.IsNullOrWhiteSpace(location) && File.Exists(location))
+                File.Delete(location);
+            return location;
+        }
         public static IEnumerable<string> Columns<T>() where T : class
         {
             return typeof(T).GetProperties().Select(p => p.Name);
@@ -64,13 +72,5 @@ namespace ImageClassification.Model
             return (labels[index],max);
         }
 
-        public static IEnumerable<string> GetColumnNames(this Schema schema)
-        {
-            for (int i = 0; i < schema.ColumnCount; i++)
-            {
-                if (!MetadataUtils.IsHidden(schema, i)
-)                    yield return schema.GetColumnName(i);
-            }
-        }
     }
 }
